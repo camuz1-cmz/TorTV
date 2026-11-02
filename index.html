@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="theme-color" content="#080D18">
+    <meta name="description" content="TorTV - Nosso canal!">
+
+    <title>TorTV | Esportes</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                Tor<span>TV</span>
+            </a>
+
+            <nav class="navigation">
+                <a href="#" class="nav-link active">Início</a>
+                <a href="#eventos" class="nav-link">Programação</a>
+                <a href="#categorias" class="nav-link">Esportes</a>
+            </nav>
+
+            <button class="search-button" aria-label="Pesquisar">
+                <span>⌕</span>
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-info">
+                    <span class="hero-label">
+                        SUA CENTRAL DE ESPORTES
+                    </span>
+
+                    <h1>
+                        O esporte acontece.<br>
+                        <span>Você acompanha.</span>
+                    </h1>
+
+                    <p>
+                        Encontre os principais eventos esportivos,
+                        acompanhe a programação e descubra o que
+                        está acontecendo hoje.
+                    </p>
+
+                    <a href="#eventos" class="primary-button">
+                        Explorar programação
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="sports-section" id="categorias">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-subtitle">EXPLORE</span>
+                        <h2>Esportes</h2>
+                    </div>
+                </div>
+
+                <div class="category-list">
+                    <button class="category-button active">
+                        Todos
+                    </button>
+
+                    <button class="category-button">
+                        Futebol
+                    </button>
+
+                    <button class="category-button">
+                        Basquete
+                    </button>
+
+                    <button class="category-button">
+                        Vôlei
+                    </button>
+
+                    <button class="category-button">
+                        Outros
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="events-section" id="eventos">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-subtitle">
+                            PROGRAMAÇÃO
+                        </span>
+                        <h2>Eventos de hoje</h2>
+                    </div>
+
+                    <span class="event-date" id="current-date"></span>
+                </div>
+
+                <div class="event-filters">
+                    <button class="filter-button active" data-filter="all">
+                        Todos
+                    </button>
+
+                    <button class="filter-button" data-filter="live">
+                        Ao vivo
+                    </button>
+
+                    <button class="filter-button" data-filter="upcoming">
+                        Em breve
+                    </button>
+                </div>
+
+                <div class="events-grid" id="events-grid">
+
+                    <!-- Eventos carregados pela API -->
+
+                </div>
+
+                <div class="loading-state" id="loading-state">
+                    Carregando programação...
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <a href="#" class="logo">
+                Tor<span>TV</span>
+            </a>
+
+            <p>
+                Sua central de programação esportiva.
+            </p>
+
+            <span class="copyright">
+                © 2026 TorTV
+            </span>
+
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
