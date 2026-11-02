@@ -1,1 +1,521 @@
+/* ========================================
+   TorTV - DESIGN SYSTEM
+======================================== */
 
+:root {
+    --background: #080D18;
+    --surface: #111827;
+    --surface-hover: #1A2638;
+
+    --primary: #16A34A;
+    --primary-light: #4ADE80;
+
+    --text: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border: rgba(148, 163, 184, 0.12);
+
+    --radius: 12px;
+    --transition: 0.25s ease;
+}
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    height: 76px;
+    background: rgba(8, 13, 24, 0.92);
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(16px);
+}
+
+.header-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+.logo span {
+    color: var(--primary-light);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text);
+}
+
+.nav-link.active {
+    font-weight: 600;
+}
+
+.search-button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 25px;
+    transition: var(--transition);
+}
+
+.search-button:hover {
+    background: var(--primary);
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 50%,
+            rgba(37, 99, 235, 0.20),
+            transparent 55%
+        ),
+        linear-gradient(
+            90deg,
+            var(--background),
+            #0D172A
+        );
+
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-content {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+.hero-info {
+    max-width: 650px;
+    animation: fadeIn 0.8s ease;
+}
+
+.hero-label,
+.section-subtitle {
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: var(--primary-light);
+}
+
+.hero p {
+    max-width: 480px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 28px;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 22px;
+    background: var(--primary);
+    color: white;
+
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.primary-button:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.sports-section,
+.events-section {
+    padding: 55px 0 15px;
+}
+
+.events-section {
+    padding-top: 45px;
+    padding-bottom: 80px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+    margin-top: 3px;
+}
+
+.event-date {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+/* ========================================
+   CATEGORIES
+======================================== */
+
+.category-list,
+.event-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-button,
+.filter-button {
+    padding: 9px 18px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+
+    background: var(--surface);
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    transition: var(--transition);
+}
+
+.category-button:hover,
+.filter-button:hover {
+    border-color: var(--primary);
+    color: white;
+}
+
+.category-button.active,
+.filter-button.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.event-filters {
+    margin-bottom: 25px;
+}
+
+/* ========================================
+   EVENT CARDS
+======================================== */
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.event-card {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation: fadeIn 0.5s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.5);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.event-poster {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.event-card:hover .event-poster {
+    transform: scale(1.04);
+}
+
+.event-image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.event-info {
+    padding: 16px;
+}
+
+.event-competition {
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 7px 0;
+}
+
+.event-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.event-status {
+    display: inline-block;
+    margin-top: 13px;
+    padding: 4px 9px;
+
+    border-radius: 5px;
+    background: rgba(148, 163, 184, 0.12);
+
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.event-status.live {
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+}
+
+.event-status.upcoming {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--primary-light);
+}
+
+/* ========================================
+   LOADING
+======================================== */
+
+.loading-state {
+    padding: 50px 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+    background: #060A12;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-content p,
+.copyright {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+    .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        height: 65px;
+    }
+
+    .navigation {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 350px;
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+    }
+
+    .event-info {
+        padding: 12px;
+    }
+
+    .event-title {
+        font-size: 14px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .navigation {
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .search-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   TV / REMOTE CONTROL
+======================================== */
+
+:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
