@@ -159,6 +159,12 @@ function createEventCard(event) {
     card.appendChild(imageContainer);
     card.appendChild(info);
 
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", () => {
+        openPlayer(event);
+    });
+
     return card;
 }
 
@@ -278,4 +284,112 @@ categoryButtons.forEach(button => {
 
 updateCurrentDate();
 fetchEvents();
+
+
+/* ========================================
+   PLAYER E FONTES
+======================================== */
+
+
+const playerSection = document.getElementById("player-section");
+const playerScreen = document.getElementById("player-screen");
+const playerTitle = document.getElementById("player-title");
+const playerCompetition = document.getElementById("player-competition");
+const sourcesList = document.getElementById("sources-list");
+const backButton = document.getElementById("back-button");
+
+let currentEvent = null;
+
+function openPlayer(event) {
+
+    if (!Array.isArray(event.embeds) || event.embeds.length === 0) {
+        alert("Nenhuma fonte disponível para este evento.");
+        return;
+    }
+
+    currentEvent = event;
+
+    playerTitle.textContent = event.title;
+    playerCompetition.textContent = event.competition || event.category || "Esporte";
+
+    sourcesList.innerHTML = "";
+    playerScreen.innerHTML = '<div class="player-placeholder">Carregando transmissão...</div>';
+
+    event.embeds.forEach((source, index) => {
+
+        const button = document.createElement("button");
+        button.className = "source-button";
+
+        const name = document.createElement("span");
+        name.className = "source-name";
+        name.textContent = source.provider || "Transmissão";
+
+        const quality = document.createElement("span");
+        quality.className = "source-quality";
+        quality.textContent = source.quality || "Qualidade não informada";
+
+        button.appendChild(name);
+        button.appendChild(quality);
+
+        button.addEventListener("click", () => {
+            selectSource(source, button);
+        });
+
+        sourcesList.appendChild(button);
+
+        if (index === 0) {
+            selectSource(source, button);
+        }
+    });
+
+    document.querySelector("main").style.display = "none";
+
+    playerSection.hidden = false;
+
+    playerSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function selectSource(source, button) {
+
+    if (!source.embed_url) {
+        alert("Endereço da transmissão não encontrado.");
+        return;
+    }
+
+    document.querySelectorAll(".source-button").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const iframe = document.createElement("iframe");
+
+    iframe.src = source.embed_url;
+    iframe.title = `Transmissão: ${currentEvent.title}`;
+    iframe.allow = "autoplay; fullscreen; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+    playerScreen.innerHTML = "";
+    playerScreen.appendChild(iframe);
+}
+
+backButton.addEventListener("click", () => {
+
+    playerScreen.innerHTML = "";
+    playerSection.hidden = true;
+
+    document.querySelector("main").style.display = "";
+
+    document.getElementById("eventos").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    currentEvent = null;
+});
+
+
 
